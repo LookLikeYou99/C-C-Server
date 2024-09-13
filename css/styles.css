@@ -1,0 +1,182 @@
+/* הגדרות משתנים */
+:root {
+    --primary-color: #d4af37; /* זהב */
+    --secondary-color: #4a90e2; /* כחול */
+    --background-color: #1b1b1b; /* כהה */
+    --text-color: #f5f5f5; /* לבן בהיר */
+    --input-background: #1c1c1c; /* כהה יותר לקלטים */
+    --card-background: #353535; /* כהה לכרטיסיות */
+    --border-radius: 8px;
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* איפוס סגנונות ברירת מחדל */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* סגנונות גוף הדף */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    direction: rtl;
+    padding: 20px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* מיכל ראשי */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #2c2c2c;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    background-image: url('../images/texture.png'); /* טקסטורה לרקע */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* כותרת ראשית */
+h1 {
+    font-family: 'Lora', serif;
+    font-size: 3rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    background-image: url('../images/header-texture.png'); /* טקסטורה לכותרת */
+    padding: 20px;
+    border-radius: 8px;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/* חלקים משולבים */
+.combined-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* חלקים */
+.section {
+    flex: 1 1 100%;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--card-background);
+}
+
+/* כותרות חלקים */
+.section h2 {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary-color);
+    text-align: center;
+}
+
+/* פסקאות בתוך חלקים */
+.section p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+/* צבעי רקע עבור חלקים שונים */
+#income-section {
+    background: linear-gradient(90deg, #3e4a89, #1b1c4b);
+}
+
+#loan-section {
+    background: linear-gradient(90deg, #a3621b, #653a0f);
+}
+
+#capital-section, #property-section, #final-calculations-section {
+    background: linear-gradient(90deg, #3c8b7b, #204942);
+}
+
+/* סגנונות טבלה */
+.section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.section table th, .section table td {
+    border: 1px solid #444;
+    padding: 12px;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: #2a2a2a; /* רקע כהה יותר לתאים */
+}
+
+.section table th {
+    background-color: #333333;
+    font-size: 1.1rem;
+}
+
+/* סגנונות תאים עם קלט */
+.input-cell input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #4d4d4d;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.input-cell input:hover, .input-cell input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    outline: none;
+}
+
+.input-cell input::placeholder {
+    color: #888;
+}
+
+/* סגנונות סה"כ */
+.total {
+    font-weight: bold;
+    background-color: #333333;
+    color: var(--primary-color);
+}
+
+/* סגנונות תאים עם הדגשה */
+.highlight-gold {
+    background-color: var(--primary-color);
+    font-weight: bold;
+    color: #1b1b1b;
+}
+
+/* סגנון מחלק */
+.combined-section {
+    display: flex;
+    flex-direction: column;
+}
+
+/* מחלק הפרדה */
+.divider {
+    border-top: 2px solid #f5f5f5;
+    margin: 30px 0;
+}
+
+/* ריספונסיביות */
+@media (max-width: 768px) {
+    .combined-section {
+        flex-direction: column;
+    }
+}

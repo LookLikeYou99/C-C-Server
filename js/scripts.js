@@ -13,6 +13,10 @@ function synchronizePropertyValues() {
 // פונקציה לקבלת ערך קלט עם וולידציה
 function getInputValue(id) {
     const input = document.getElementById(id);
+    if (!input) {
+        console.error(`Element with id '${id}' not found.`);
+        return 0;
+    }
     const value = parseFloat(input.value);
     if (isNaN(value) || value < 0) {
         input.classList.add('input-error');
@@ -28,9 +32,9 @@ function calculateResults() {
     // סנכרון ערכי הנכס
     synchronizePropertyValues();
 
-    // חישוב הכנסות
-    const salary1Partner = getInputValue('salary1-partner');
-    const salary1Spouse = getInputValue('salary1-spouse');
+    // Block 1: חישוב סה"כ הכנסה משפחתית
+    const salary1Partner = getInputValue('salary1-partner'); // בן זוג
+    const salary1Spouse = getInputValue('salary1-spouse');   // בת זוג
     const salary2Partner = getInputValue('salary2-partner');
     const salary2Spouse = getInputValue('salary2-spouse');
     const businessIncomePartner = getInputValue('business-income-partner');
@@ -60,7 +64,7 @@ function calculateResults() {
     const availableMortgage = totalIncome * 0.33;
     document.getElementById('available-mortgage').textContent = `₪${availableMortgage.toLocaleString()}`;
 
-    // חישוב הלוואות
+    // Block 2: חישוב הלוואות
     const loanBalance1 = getInputValue('loan1');
     const loanBalance2 = getInputValue('loan2');
     const loanBalance3 = getInputValue('loan3');
@@ -83,17 +87,23 @@ function calculateResults() {
     const availableMortgageAfterLoans = availableMortgage - totalMonthlyPayment;
     document.getElementById('available-mortgage-after-loans').textContent = `₪${availableMortgageAfterLoans.toLocaleString()}`;
 
-    // משכנתא מאושרת
+    // חישוב משכנתא מאושרת
     const mortgageWithoutLoans = (availableMortgage / 550) * 100000;
     document.getElementById('approved-amount-without-loans').textContent = `₪${mortgageWithoutLoans.toLocaleString()}`;
 
     const mortgageWithLoans = (availableMortgageAfterLoans / 550) * 100000;
     document.getElementById('approved-amount-with-loans').textContent = `₪${mortgageWithLoans.toLocaleString()}`;
 
-    // חישוב הון אישי מצטבר
+    // Block 3: חישוב הון אישי ותשלומים
     const personalCapital = getInputValue('personal-capital');
-    // נלקח מיתרות ההלוואות (מלבד הון עצמי)
-    const totalCapital = personalCapital + loanBalance2 + loanBalance3 + loanBalance4 + loanBalance5 + loanBalance6;
+    const lockedCapitalLoan = getInputValue('locked-capital-loan');
+    const governmentLoan = getInputValue('government-loan');
+    const financialPlatformsCapital = getInputValue('financial-platforms-capital');
+    const otherCapital1 = getInputValue('other-capital-1');
+    const otherCapital2 = getInputValue('other-capital-2');
+
+    // סה"כ הון אישי מצטבר
+    const totalCapital = personalCapital + lockedCapitalLoan + governmentLoan + financialPlatformsCapital + otherCapital1 + otherCapital2;
     document.getElementById('total-capital').textContent = `₪${totalCapital.toLocaleString()}`;
 
     // חישוב הוצאות
@@ -141,7 +151,8 @@ function calculateResults() {
     document.getElementById('final-total-income').textContent = `₪${totalIncome.toLocaleString()}`;
     document.getElementById('final-total-loans').textContent = `₪${totalLoans.toLocaleString()}`;
     document.getElementById('final-total-monthly-loan-payment').textContent = `₪${totalMonthlyPayment.toLocaleString()}`;
-    document.getElementById('final-total-capital-and-costs').textContent = `₪${totalCapital.toLocaleString()}`;
+    // הצגת הון עצמי נטו במקום סה"כ הון אישי מצטבר
+    document.getElementById('final-total-capital-and-costs').textContent = `₪${netCapital.toLocaleString()}`;
 }
 
 // פונקציה לחישוב מינוף
@@ -171,3 +182,6 @@ function resetCalculator() {
         td.textContent = '₪';
     });
 }
+
+// קריאה ראשונית לפונקציית החישוב
+calculateResults();

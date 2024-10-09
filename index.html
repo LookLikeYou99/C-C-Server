@@ -29,7 +29,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- שורות טבלה עם קלטים -->
                         <tr>
                             <td>משכורת 1</td>
                             <td class="input-cell"><input type="number" id="salary1-partner" placeholder="₪" value="6000"></td>
@@ -54,16 +53,6 @@
                             <td>קצבת נכות לצמיתות</td>
                             <td class="input-cell"><input type="number" id="disability-allowance-partner" placeholder="₪" value="1500"></td>
                             <td class="input-cell"><input type="number" id="disability-allowance-spouse" placeholder="₪" value="1500"></td>
-                        </tr>
-                        <tr>
-                            <td>הכנסה - מזונות</td>
-                            <td class="input-cell"><input type="number" id="alimony-partner" placeholder="₪" value="1500"></td>
-                            <td class="input-cell"><input type="number" id="alimony-spouse" placeholder="₪"></td>
-                        </tr>
-                        <tr>
-                            <td>ניכוי מזונות</td>
-                            <td class="input-cell"><input type="number" id="deduction-alimony-partner" placeholder="₪"></td>
-                            <td class="input-cell"><input type="number" id="deduction-alimony-spouse" placeholder="₪" value="1500"></td>
                         </tr>
                         <tr class="total">
                             <td>סה"כ הכנסות</td>
@@ -95,7 +84,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>הלוואה</td>
+                            <td>הלוואה 1</td>
                             <td class="input-cell"><input type="number" id="loan1" placeholder="₪" value="100000"></td>
                             <td class="input-cell"><input type="number" id="loan1-monthly" placeholder="₪" value="500"></td>
                         </tr>
@@ -110,32 +99,21 @@
                             <td class="input-cell"><input type="number" id="loan3-monthly" placeholder="₪" value="100"></td>
                         </tr>
                         <tr>
-                            <td>גיוס הון אפיקים פיננסיים</td>
-                            <td class="input-cell"><input type="number" id="loan4" placeholder="₪" value="50000"></td>
-                            <td class="input-cell"><input type="number" id="loan4-monthly" placeholder="₪" value="100"></td>
-                        </tr>
-                        <tr>
                             <td>אחר 1</td>
                             <td class="input-cell"><input type="number" id="loan5" placeholder="₪" value="10000"></td>
                             <td class="input-cell"><input type="number" id="loan5-monthly" placeholder="₪" value="100"></td>
-                        </tr>
-                        <tr>
-                            <td>אחר 2</td>
-                            <td class="input-cell"><input type="number" id="loan6" placeholder="₪" value="10000"></td>
-                            <td class="input-cell"><input type="number" id="loan6-monthly" placeholder="₪" value="100"></td>
                         </tr>
                         <tr class="total">
                             <td>סה"כ יתרת ההלוואות</td>
                             <td id="total-loans">₪</td>
                             <td id="total-monthly-payment">₪</td>
                         </tr>
+                        <tr>
+                            <td>סכום פנוי למשכנתא</td>
+                            <td colspan="2" id="available-mortgage-after-loans">₪</td>
+                        </tr>
                     </tbody>
                 </table>
-                <p>סכום פנוי למשכנתא לאחר החזר הלוואות: <span id="available-mortgage-after-loans">₪</span></p>
-                <p>משכנתא מאושרת ללא הלוואות: <span id="approved-amount-without-loans">₪</span></p>
-                <p>משכנתא מאושרת עם הלוואות: <span id="approved-amount-with-loans">₪</span></p>
-                <p>סך תקציב לביצוע השקעה (ללא הלוואות): <span id="mortgage-and-capital-without-loans">₪</span></p>
-                <p>סך תקציב לביצוע השקעה (עם הלוואות): <span id="mortgage-and-capital-with-loans">₪</span></p>
             </div>
         </div>
 
@@ -144,18 +122,18 @@
         <!-- חלק הון אישי מצטבר -->
         <div class="combined-section">
             <div class="section" id="capital-section">
-                <h2><i class="fas fa-piggy-bank"></i> הון אישי מצטבר</h2>
+                <h2><i class="fas fa-piggy-bank"></i> הלוואות מצטברות</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>הון אישי מצטבר</th>
+                            <th>הלוואה מצטברת</th>
                             <th>סכום</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>הון אישי/משקיע</td>
-                            <td class="input-cell"><input type="number" id="personal-capital" placeholder="₪" value="250000"></td>
+                            <td>הלוואה 1</td>
+                            <td class="input-cell"><input type="number" id="personal-capital" placeholder="₪" value="100000"></td>
                         </tr>
                         <tr>
                             <td>הלוואה ע"ח הון כלוא</td>
@@ -165,100 +143,12 @@
                             <td>הלוואת מדינה</td>
                             <td class="input-cell"><input type="number" id="government-loan" placeholder="₪" value="50000"></td>
                         </tr>
-                        <tr>
-                            <td>גיוס הון אפיקים פיננסיים</td>
-                            <td class="input-cell"><input type="number" id="financial-platforms-capital" placeholder="₪" value="50000"></td>
-                        </tr>
-                        <tr>
-                            <td>אחר 1</td>
-                            <td class="input-cell"><input type="number" id="other-capital-1" placeholder="₪" value="10000"></td>
-                        </tr>
-                        <tr>
-                            <td>אחר 2</td>
-                            <td class="input-cell"><input type="number" id="other-capital-2" placeholder="₪" value="10000"></td>
-                        </tr>
                         <tr class="total">
-                            <td>סה"כ הון אישי מצטבר</td>
+                            <td>סה"כ הלוואות מצטברות</td>
                             <td id="total-capital">₪</td>
                         </tr>
-                        <tr>
-                            <td>הוצאות תפעול</td>
-                            <td class="input-cell"><input type="number" id="operational-expenses" placeholder="₪" value="100000"></td>
-                        </tr>
-                        <tr>
-                            <td>הוצאות מיסוי</td>
-                            <td class="input-cell"><input type="number" id="tax-expenses" placeholder="₪" value="20000"></td>
-                        </tr>
-                        <tr>
-                            <td>הוצאות השבחה</td>
-                            <td class="input-cell"><input type="number" id="enhancement-expenses" placeholder="₪" value="100000"></td>
-                        </tr>
-                        <tr class="total">
-                            <td>סה"כ הוצאות</td>
-                            <td id="total-expenses">₪</td>
-                        </tr>
-                        <tr class="total">
-                            <td>סה"כ הון עצמי נטו</td>
-                            <td id="net-capital">₪</td>
-                        </tr>
                     </tbody>
                 </table>
-                <p>משכנתא מאושרת לדירה ראשונה: <span id="approved-mortgage-first-home">₪</span></p>
-                <p>משכנתא מאושרת לדירה שנייה: <span id="approved-mortgage-second-home">₪</span></p>
-                <p>סך תקציב לביצוע השקעה (דירה ראשונה): <span id="total-budget-first-home">₪</span></p>
-                <p>סך תקציב לביצוע השקעה (דירה שנייה): <span id="total-budget-second-home">₪</span></p>
-            </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- חלק פרטי הנכס ומינוף -->
-        <div class="combined-section">
-            <div class="section" id="property-section">
-                <h2><i class="fas fa-home"></i> פרטי הנכס ומינוף</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>מינוף</th>
-                            <th>שווי</th>
-                            <th>הון עצמי</th>
-                            <th>משכנתא</th>
-                            <th>החזר חודשי</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="highlight-gold">
-                            <td>75%</td>
-                            <td class="input-cell"><input type="number" id="property-value-75" placeholder="₪" value="800000"></td>
-                            <td id="equity-75">₪</td>
-                            <td id="mortgage-75">₪</td>
-                            <td id="monthly-mortgage-payment-75">₪</td>
-                        </tr>
-                        <tr class="highlight-gold">
-                            <td>60%</td>
-                            <td class="input-cell"><input type="number" id="property-value-60" placeholder="₪" value="800000"></td>
-                            <td id="equity-60">₪</td>
-                            <td id="mortgage-60">₪</td>
-                            <td id="monthly-mortgage-payment-60">₪</td>
-                        </tr>
-                        <tr class="highlight-gold">
-                            <td>40%</td>
-                            <td class="input-cell"><input type="number" id="property-value-40" placeholder="₪" value="800000"></td>
-                            <td id="equity-40">₪</td>
-                            <td id="mortgage-40">₪</td>
-                            <td id="monthly-mortgage-payment-40">₪</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- חלק תוצאות החישוב -->
-            <div class="section" id="final-calculations-section">
-                <h2><i class="fas fa-calculator"></i> תוצאות החישוב</h2>
-                <p>סה"כ הכנסות: <span id="final-total-income">₪</span></p>
-                <p>סה"כ הלוואות: <span id="final-total-loans">₪</span></p>
-                <p>סה"כ החזר חודשי על הלוואות: <span id="final-total-monthly-loan-payment">₪</span></p>
-                <p>סה"כ הון עצמי נטו: <span id="final-total-capital-and-costs">₪</span></p>
             </div>
         </div>
     </div>
